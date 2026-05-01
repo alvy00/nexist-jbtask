@@ -76,3 +76,12 @@ Prevented at two levels:
 - **UI** — the "Add to cart" button is disabled and relabelled "✓ Added" once an item is in the cart
 
 ---
+
+## Issues Identified and Fixed
+
+| #   | Issue                                                                                                       | Fix                                                        |
+| --- | ----------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------- |
+| 1   | `redux-persist` caused `state.cart` to not be an array during hydration, breaking `.find()` and `.reduce()` | Reverted to manual `localStorage` implementation           |
+| 2   | `redux-persist` triggered non-serializable value warnings in Redux Toolkit middleware                       | Resolved by reverting; documented as known incompatibility |
+
+---
