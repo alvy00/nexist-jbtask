@@ -50,14 +50,29 @@ Open [http://localhost:3000](http://localhost:3000) in your browser.
 
 ---
 
-## Problems solved
+## Assessment Brief
 
-1. Cart reset on refresh → fixed with localStorage persistence
-2. Duplicate items → prevented in reducer with state.find check
+> "When I refresh the page, my selected items disappear. Also, I don't understand how to use the feature properly."
+
+### Problem 1 — State not persisting on refresh
+
+Redux resets to `initialState` on every page load by default. The fix was to manually persist the cart to `localStorage` using two hooks into the Redux store:
+
+```ts
+// load saved state before store initialises
+preloadedState: loadState();
+
+// save to localStorage on every state change
+store.subscribe(() => {
+    localStorage.setItem("cart", JSON.stringify(store.getState().cart));
+});
+```
+
+### Problem 2 — Duplicate items in cart
+
+Prevented at two levels:
+
+- **Reducer** — `state.find()` checks for an existing item before pushing
+- **UI** — the "Add to cart" button is disabled and relabelled "✓ Added" once an item is in the cart
 
 ---
-
-## Issues identified and fixed
-
-1. redux-persist caused state.cart to not be an array during hydration → reverted to manual localStorage
-2. Non-serializable value warning with redux-persist → resolved by reverting
