@@ -23,16 +23,15 @@ export function ProductCard({
             whileHover={{ y: -5 }}
             className="group relative bg-white border border-gray-100 rounded-3xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300"
         >
-            {/* Visual Header / Emoji Area */}
+            {/* Visual Header */}
             <div className="h-32 flex items-center justify-center relative overflow-hidden bg-gray-50">
-                {/* Elegant, Slower Shine Animation */}
                 <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none">
                     <motion.div
                         initial={{ x: "-100%", rotate: 45 }}
                         whileHover={{ x: "100%" }}
                         transition={{
-                            duration: 1.5, // Slower, more elegant sweep
-                            ease: [0.4, 0, 0.2, 1], // Smooth professional easing
+                            duration: 1.5,
+                            ease: [0.4, 0, 0.2, 1],
                             repeat: 0,
                         }}
                         className="absolute inset-0 w-[50%] h-[200%] bg-gradient-to-r from-transparent via-white/40 to-transparent -top-1/2"
@@ -96,7 +95,7 @@ export function ProductCard({
               ${
                   inCart
                       ? "bg-gray-100 text-gray-400 cursor-not-allowed border border-gray-200"
-                      : "bg-gray-900 text-white hover:bg-indigo-600 active:bg-indigo-700 shadow-md cursor-pointer"
+                      : "bg-black/40 text-white hover:bg-green-600 active:bg-indigo-700 shadow-md hover:scale-105 active:scale-95 cursor-pointer"
               }`}
                     >
                         {inCart ? "ADDED" : "ADD TO CART"}

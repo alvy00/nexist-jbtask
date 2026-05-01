@@ -84,9 +84,13 @@ export function CartSection({ cart, total, onRemove }: CartSectionProps) {
                                         <span className="text-sm font-semibold text-gray-900">
                                             ${item.price.toFixed(2)}
                                         </span>
+
                                         <button
                                             onClick={() => onRemove(item)}
-                                            className="text-xs text-gray-300 hover:text-red-500 transition-colors cursor-pointer font-medium"
+                                            className={`text-xs font-medium px-4 py-1.5 rounded-lg transition-all duration-500
+                                            bg-white/5 backdrop-blur-lg border border-black/30 text-gray-300
+                                            hover:border-red-500/80 hover:bg-red-600/10 hover:text-red-400
+                                            hover:scale-105 active:scale-95 cursor-pointer`}
                                         >
                                             Remove
                                         </button>
