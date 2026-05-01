@@ -1,36 +1,63 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Nexist Store
+
+A minimal e-commerce cart built as part of the Nexist Fullstack Support Engineer technical assessment.
+
+---
+
+## Tech Stack
+
+- [Next.js](https://nextjs.org/) — React framework
+- [TypeScript](https://www.typescriptlang.org/) — type safety
+- [Redux Toolkit](https://redux-toolkit.js.org/) — state management
+- [Framer Motion](https://www.framer.com/motion/) — animations
+- [React Toastify](https://fkhadra.github.io/react-toastify/) — notifications
+- [Tailwind CSS](https://tailwindcss.com/) — styling
+
+---
 
 ## Getting Started
 
-First, run the development server:
+### Prerequisites
+
+- Node.js 18+
+- npm
+
+### Installation
 
 ```bash
+git clone https://github.com/alvy00/nexist-jbtask.git
+cd nexist-jbtask
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000) in your browser.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+---
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Features
 
-## Learn More
+- Browse a grid of 8 products
+- Add and remove items from the cart
+- Cart total calculated in real time
+- Cart persists across page refreshes via `localStorage`
+- Duplicate items prevented at both the UI and reducer level
+- Toggle `localStorage` persistence on/off for demonstration
+- Animated product cards and cart interactions
+- Toast notifications for all user actions
+- Empty cart state with clear messaging
+- Loading screen on initial render
 
-To learn more about Next.js, take a look at the following resources:
+---
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Problems solved
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+1. Cart reset on refresh → fixed with localStorage persistence
+2. Duplicate items → prevented in reducer with state.find check
 
-## Deploy on Vercel
+---
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Issues identified and fixed
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+1. redux-persist caused state.cart to not be an array during hydration → reverted to manual localStorage
+2. Non-serializable value warning with redux-persist → resolved by reverting
